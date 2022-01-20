@@ -1,7 +1,7 @@
 <template>
     <header>
         <h1>tasks</h1>
-        <Button @btn-click="$emit('toggle-add-task')" :text="showAddTask ? 'x' : '+'" />
+        <Button @btn-click="$emit('toggle-add-task')" :text="showAddTask ? 'x' : '+'" v-show="homePage" />
     </header>
 </template>
 
@@ -15,6 +15,15 @@
         },
         components: {
             Button
+        },
+        computed: {
+            homePage() {
+                if(this.$route.path === '/') {
+                    return true
+                } else {
+                    return false
+                }
+            }
         }
     }
 </script>

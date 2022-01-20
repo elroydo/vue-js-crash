@@ -32,7 +32,6 @@
         margin: 0.6rem 0;
         padding: 0.3rem 0.9rem;
         cursor: pointer;
-        transition: 0.3s ease-in-out;
     }
 
     .task h3 {

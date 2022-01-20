@@ -10,13 +10,13 @@
       "id": 2,
       "text": "ni",
       "date": "14:44 04.04.2022",
-      "reminder": false
+      "reminder": true
     },
     {
       "id": 3,
       "text": "san",
       "date": "15:55 05.05.2022",
-      "reminder": true
+      "reminder": false
     }
   ]
 }
