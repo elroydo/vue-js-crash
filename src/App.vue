@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <Header />
+    <AddTask @add-task="addTask" />
     <Tasks @toggle-reminder="toggleReminder" @delete-task="deleteTask" :tasks="tasks" />
   </div>
 </template>
@@ -8,12 +9,14 @@
 <script>
 import Header from './components/Header';
 import Tasks from './components/Tasks';
+import AddTask from './components/AddTask';
 
 export default {
   name: 'App',
   components: {
     Header,
-    Tasks
+    Tasks,
+    AddTask
   },
   data() {
     return {
@@ -21,35 +24,38 @@ export default {
     }
   },
   methods: {
-    toggleReminder(id) {
-      this.tasks = this.tasks.map((task) => task.id === id ? {
-        ...task, reminder: !task.reminder
-      } : task)
+    addTask(task) {
+      this.tasks = [...this.tasks, task]
     },
     deleteTask(id) {
       if(confirm('you sure?')) {
         this.tasks = this.tasks.filter((task) => task.id !== id)
       }
-    }
+    },
+    toggleReminder(id) {
+      this.tasks = this.tasks.map((task) => task.id === id ? {
+        ...task, reminder: !task.reminder
+      } : task)
+    },
   },
   created() {
     this.tasks = [
       {
         id: 1,
         text: 'ichi',
-        day: '13:33 03.03.2022',
+        date: '13:33 03.03.2022',
         reminder: true
       },
       {
         id: 2,
         text: 'ni',
-        day: '14:44 04.04.2022',
+        date: '14:44 04.04.2022',
         reminder: true
       },
       {
         id: 3,
         text: 'san',
-        day: '15:55 05.05.2022',
+        date: '15:55 05.05.2022',
         reminder: false
       }
     ]
@@ -79,7 +85,6 @@ body {
   padding: 1rem 2rem;
   overflow: auto;
   border: 1px solid rgb(99, 99, 99);
-  border-radius: 33px;
 }
 
 a {
@@ -98,7 +103,7 @@ a {
 }
 
 .btn:focus {
-    box-shadow: 0 1px 3px rgb(130, 130, 130);
+    box-shadow: 1px 1px 0 rgb(130, 130, 130);
 }
 
 .btn:hover {
