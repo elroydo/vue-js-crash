@@ -1,7 +1,7 @@
 <template>
     <header>
         <h1>tasks</h1>
-        <Button text="add task" />
+        <Button @btn-click="$emit('toggle-add-task')" :text="showAddTask ? 'x' : '+'" />
     </header>
 </template>
 
@@ -10,6 +10,9 @@
 
     export default {
         name: 'Header',
+        props: {
+            showAddTask: Boolean
+        },
         components: {
             Button
         }

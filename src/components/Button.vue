@@ -12,7 +12,7 @@
         },
         methods: {
             onClick() {
-                alert("fuck");
+                this.$emit('btn-click');
             }
         }
     }
